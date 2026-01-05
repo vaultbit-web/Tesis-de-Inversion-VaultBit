@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo, useEffect } from 'react';
 import OnePager from './components/OnePager';
 import InteractiveDashboard from './components/InteractiveDashboard';
@@ -11,6 +10,35 @@ const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('es');
   const [view, setView] = useState<'overview' | 'deck'>('overview');
   const content = useMemo(() => TRANSLATIONS[lang], [lang]);
+
+  // SEO Dinámico: Actualiza el título y descripción según el idioma y la vista
+  useEffect(() => {
+    const isES = lang === 'es';
+    const baseTitle = isES ? 'Portal de Inversores | VaultBit' : 'Investor Portal | VaultBit';
+    
+    const viewTitle = view === 'deck' 
+      ? (isES ? 'Pitch Deck Estratégico' : 'Strategic Pitch Deck')
+      : (isES ? 'Infraestructura Grado VII' : 'Grade VII Infrastructure');
+
+    document.title = `${baseTitle} - ${viewTitle}`;
+    
+    // Actualización dinámica de la meta-descripción para SEO multilingüe
+    const description = view === 'deck'
+      ? (isES 
+          ? 'Descubra la tesis de inversión y el plan de expansión de VaultBit. Infraestructura física para la custodia segura de criptoactivos.' 
+          : 'Discover VaultBit investment thesis and expansion plan. Physical infrastructure for secure cryptoasset custody.')
+      : (isES
+          ? 'Acceso exclusivo para inversores de VaultBit. Explore el Plan 2026 y métricas de la ronda Pre-Seed para custodia física Grado VII.'
+          : 'Exclusive VaultBit investor portal. Explore the 2026 Plan and Pre-Seed metrics for Grade VII physical custody.');
+
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', description);
+    }
+    
+    // También actualizamos el atributo lang del HTML para accesibilidad y SEO
+    document.documentElement.lang = lang;
+  }, [lang, view]);
 
   const toggleLanguage = () => {
     setLang(prev => prev === 'es' ? 'en' : 'es');
