@@ -23,7 +23,7 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
       valuationCap: "€6,000,000",
       allocation: [
         { category: "CAPEX Técnico", percentage: 70, details: ["Bóveda Grado VII", "Módulos Cajas", "Blindaje", "Biometría"] },
-        { category: "Runway Operativo", percentage: 20, details: ["OPEX 12 meses", "Seguridad", "Staff"] },
+        { category: "Runway Operativo", percentage: 20, details: ["OPEX 12 meses", "Seguridad", "Personal"] },
         { category: "GTM & Marketing", percentage: 10, details: ["Marketing B2B", "Reserva MiCA"] }
       ]
     },
@@ -47,7 +47,7 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
     lounge: {
       badge: "Acceso Exclusivo para Inversores",
       title: "Comunidad Privada VaultBit",
-      description: "Accede a nuestra comunidad exclusiva en Telegram donde compartimos actualizaciones semanales, análisis del mercado MiCA e información privilegiada sobre el despliegue de infraestructura física.",
+      description: "Acceda a nuestra comunidad exclusiva en Telegram donde compartimos actualizaciones semanales, análisis del mercado MiCA e información privilegiada sobre el despliegue de infraestructura física.",
       button: "Entrar en la Comunidad"
     },
     dashboard: {
@@ -57,7 +57,7 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
       chartSub: "Escalabilidad operativa proyectada 2026 - 2030.",
       chartRevenue: "Ingresos",
       chartEbitda: "EBITDA",
-      chartNote: "Modelo validado para apertura anual de sedes estratégicas post-Sede Barcelona.",
+      chartNote: "Modelo validado para apertura anual de sedes estratégicas tras Sede Barcelona.",
       capexTitle: "Desglose Técnico CAPEX",
       capexSub: "Asignación de capital para infraestructura Grado VII (Sede 1)."
     },
@@ -121,7 +121,7 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
       chartSub: "Projected operational scalability 2026 - 2030.",
       chartRevenue: "Revenue",
       chartEbitda: "EBITDA",
-      chartNote: "Validated model for annual strategic branch openings post-Barcelona.",
+      chartNote: "Validated model for annual strategic branch openings after Barcelona branch.",
       capexTitle: "Technical CAPEX Breakdown",
       capexSub: "Capital allocation for Grade VII infrastructure (Branch 1)."
     },
@@ -137,6 +137,7 @@ export const VAULTBIT_SHARED = {
   website: "www.vaultbit.es",
   appUrl: "app.vaultbit.es",
   communityLink: "https://t.me/+L0jB1FwdNT5iZGE8",
+  roundtableLink: "https://app.roundtable.eu/i/cs4GsSmL", 
   founder: {
     name: "Daniel Brosed Giral",
     role: "Founder & CEO",
@@ -149,14 +150,14 @@ export const ROADMAP: Record<Language, RoadmapItem[]> = {
   es: [
     { quarter: "Q1 2026", title: "Cierre Ronda", description: "Finalización de financiación y licencias regulatorias." },
     { quarter: "Q2 2026", title: "Obra Civil", description: "Construcción de bóveda y adecuación del local." },
-    { quarter: "Q3 2026", title: "Certificación", description: "Inspección Grado VII y Launch oficial." },
-    { quarter: "Q4 2026", title: "Breakeven", description: "Alcance del equilibrio operativo en Sede 1." }
+    { quarter: "Q3 2026", title: "Certificación", description: "Inspección Grado VII y Lanzamiento oficial." },
+    { quarter: "Q4 2026", title: "Punto de Equilibrio", description: "Alcance del equilibrio operativo en Sede 1." }
   ],
   en: [
     { quarter: "Q1 2026", title: "Round Closure", description: "Financing completion and regulatory licenses." },
     { quarter: "Q2 2026", title: "Civil Works", description: "Vault construction and premises adaptation." },
     { quarter: "Q3 2026", title: "Certification", description: "Grade VII inspection and official Launch." },
-    { quarter: "Q4 2026", title: "Breakeven", description: "Reaching operating break-even in Sede 1." }
+    { quarter: "Q4 2026", title: "Break-even", description: "Reaching operating break-even in Branch 1." }
   ]
 };
 

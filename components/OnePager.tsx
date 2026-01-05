@@ -12,120 +12,161 @@ const OnePager: React.FC<Props> = ({ lang }) => {
   const currentRoadmap = ROADMAP[lang];
 
   return (
-    <div className="mx-auto bg-[#050505] w-full max-w-[210mm] shadow-2xl overflow-hidden relative flex flex-col text-gray-200 border border-gray-800 font-inter fade-in mb-8">
-      {/* Header */}
-      <header className="bg-black p-6 md:p-8 pb-4 md:pb-6 flex flex-col md:flex-row justify-between items-center md:items-start border-b border-gray-800 gap-4">
-        <div className="w-full md:w-2/3 flex flex-col items-center md:items-start">
-          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/mP43LZ32R1CBREy3/logo-principal-png-AGBzjqQ2gWtpMMzp.png" alt="VaultBit Logo" className="h-10 md:h-14 mb-3 object-contain" />
-          <p className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-[0.2em] font-bold text-center md:text-left">{content.tagline}</p>
-        </div>
-        <div className="w-full md:w-1/3 text-center md:text-right">
-          <div className="inline-block bg-white/10 border border-white/20 px-3 py-1 rounded-full text-[9px] md:text-[10px] text-[#FF8A00] font-bold mb-2 tracking-wide uppercase">{content.round}</div>
-          <p className="text-[10px] font-medium text-gray-400">{VAULTBIT_SHARED.website}</p>
-        </div>
-      </header>
-
-      <div className="flex flex-col md:flex-row flex-1">
-        {/* Left Column */}
-        <div className="w-full md:w-[63%] p-6 md:p-8 md:pr-6 border-b md:border-b-0 md:border-r border-gray-800 flex flex-col gap-6 md:gap-8">
-          <section>
-            <h2 className="text-base md:text-lg font-bold text-white border-l-[3px] border-[#FF8A00] pl-3 mb-3 uppercase tracking-wide">
-              {lang === 'es' ? 'La Oportunidad' : 'The Opportunity'}
-            </h2>
-            <p className="text-[12px] md:text-xs text-gray-300 leading-relaxed text-justify font-light">
-              {content.opportunity}
-            </p>
-          </section>
-
-          <section>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <div className="w-full sm:w-1/2">
-                <h3 className="font-bold text-white text-xs mb-3 flex items-center uppercase tracking-wide">
-                  <span className="text-red-500 mr-2">●</span> {lang === 'es' ? 'El Problema' : 'The Problem'}
-                </h3>
-                <ul className="text-[11px] text-gray-400 space-y-3">
-                  {content.problem.map((p, i) => (
-                    <li key={i} className="pl-2 border-l border-red-500/30">
-                      <strong className="text-gray-200 block mb-0.5">{p.title}</strong>
-                      {p.desc}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="w-full sm:w-1/2">
-                <h3 className="font-bold text-white text-xs mb-3 flex items-center uppercase tracking-wide">
-                  <span className="text-[#FF8A00] mr-2">●</span> {lang === 'es' ? 'La Solución' : 'The Solution'}
-                </h3>
-                <ul className="text-[11px] text-gray-400 space-y-3">
-                  {content.solution.map((s, i) => (
-                    <li key={i} className="pl-2 border-l border-[#FF8A00]">
-                      <strong className="text-gray-200 block mb-0.5">{s.title}</strong>
-                      {s.desc}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <section className="mt-auto">
-            <h2 className="text-base md:text-lg font-bold text-white border-l-[3px] border-[#FF8A00] pl-3 mb-3 uppercase tracking-wide">Roadmap 2026</h2>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 pt-3 border-t border-gray-800">
-              {currentRoadmap.map((item, idx) => (
-                <div key={idx} className={`text-left ${idx > 0 ? 'lg:border-l lg:border-gray-800 lg:pl-3' : ''}`}>
-                  <div className="font-bold text-[#FF8A00] mb-1 text-[10px]">{item.quarter}</div>
-                  <div className="text-gray-200 font-bold mb-0.5 text-[11px]">{item.title}</div>
-                  <div className="text-gray-500 leading-tight text-[9px]">{item.description}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-
-        {/* Right Column */}
-        <div className="w-full md:w-[37%] bg-[#0A0A0A] p-6 md:p-8 flex flex-col gap-8 md:gap-10">
-          <div>
-            <h2 className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold mb-5 border-b border-gray-800 pb-2">Unit Economics</h2>
-            <div className="space-y-4">
-              {content.financials.map((metric, i) => (
-                <div key={i} className={`bg-[#121212] p-5 rounded-lg border-l-[3px] ${i === 0 ? 'border-[#FF8A00]' : i === 1 ? 'border-white' : 'border-gray-600'}`}>
-                  <p className="text-[9px] text-gray-400 uppercase tracking-widest mb-1">{metric.label}</p>
-                  <p className="text-3xl font-bold text-white mb-1 tracking-tighter">{metric.value}</p>
-                  <p className="text-[9px] text-gray-500">{metric.description}</p>
-                </div>
-              ))}
-            </div>
+    <div className="w-full max-w-7xl mx-auto space-y-12 md:space-y-24 px-6 font-host">
+      
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#0D0D0D] to-black border border-white/5 shadow-2xl">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF8A00] opacity-[0.03] blur-[120px] -z-10 pointer-events-none"></div>
+        
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8">
+            <span className="w-2 h-2 rounded-full bg-[#FF8A00] shadow-[0_0_8px_#FF8A00]"></span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">{content.round}</span>
           </div>
+          
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] tracking-tight uppercase mb-8">
+            {lang === 'es' ? 'Infraestructura' : 'Infrastructure'} <br/>
+            <span className="text-[#FF8A00] glow-orange">{lang === 'es' ? 'Crítica' : 'Critical'}</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-gray-400 font-normal leading-relaxed max-w-2xl mx-auto mb-12">
+            {content.opportunity}
+          </p>
 
-          <div className="bg-gradient-to-b from-gray-900 to-black p-6 rounded-xl border border-gray-800">
-            <p className="text-[9px] text-gray-400 uppercase tracking-wider mb-1">{lang === 'es' ? 'Objetivo Ronda' : 'Round Target'}</p>
-            <p className="text-3xl font-bold text-white tracking-tighter mb-4">{content.deal.target}</p>
-            <div className="space-y-3 pt-3 border-t border-gray-800">
-               <div className="flex justify-between text-[10px] font-bold">
-                 <span className="text-gray-500">BSA AIR</span>
-                 <span className="text-white">{content.deal.valuationCap} Cap</span>
-               </div>
-               <div className="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden flex">
-                  <div className="bg-[#FF8A00] w-[70%]"></div>
-                  <div className="bg-white w-[30%]"></div>
-               </div>
-            </div>
+          <a 
+            href={VAULTBIT_SHARED.roundtableLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-[#FF8A00] hover:bg-white text-black font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl"
+          >
+            {lang === 'es' ? 'Invertir vía Roundtable' : 'Invest via Roundtable'}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      {/* Problema y Solución Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* El Desafío */}
+        <div className="bg-[#0D0D0D] border border-red-500/5 p-8 md:p-12 rounded-[2rem] group hover:border-red-500/15 transition-all duration-500">
+          <h2 className="text-2xl font-extrabold text-white uppercase tracking-tight mb-10 flex items-center gap-3">
+            <span className="text-red-600 text-3xl">●</span>
+            {lang === 'es' ? 'El Desafío' : 'The Challenge'}
+          </h2>
+          <div className="space-y-10">
+            {content.problem.map((p, i) => (
+              <div key={i} className="flex gap-6 items-start">
+                <span className="text-red-600/15 font-extrabold text-3xl italic leading-none">0{i + 1}</span>
+                <div>
+                  <h4 className="text-white font-bold text-lg mb-2 uppercase tracking-tight">{p.title}</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed font-normal">{p.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
 
-          <div className="mt-auto pt-6 border-t border-gray-800 md:border-0">
-            <p className="text-xs font-bold text-white">{VAULTBIT_SHARED.founder.name}</p>
-            <p className="text-[10px] text-[#FF8A00] font-bold uppercase tracking-widest">{VAULTBIT_SHARED.founder.role}</p>
-            <div className="mt-3 text-[10px] text-gray-500 space-y-1">
-              <p>{VAULTBIT_SHARED.founder.email}</p>
-              <p>{VAULTBIT_SHARED.founder.phone}</p>
-            </div>
+        {/* La Solución */}
+        <div className="bg-[#0D0D0D] border border-[#FF8A00]/5 p-8 md:p-12 rounded-[2rem] relative group hover:border-[#FF8A00]/20 transition-all duration-500">
+          <h2 className="text-2xl font-extrabold text-white uppercase tracking-tight mb-10 flex items-center gap-3">
+            <span className="text-[#FF8A00] text-3xl glow-orange">●</span>
+            {lang === 'es' ? 'La Solución' : 'The Solution'}
+          </h2>
+          <div className="space-y-10">
+            {content.solution.map((s, i) => (
+              <div key={i} className="flex gap-6 items-start">
+                <span className="text-[#FF8A00]/15 font-extrabold text-3xl italic leading-none">0{i + 1}</span>
+                <div>
+                  <h4 className="text-white font-bold text-lg mb-2 uppercase tracking-tight">{s.title}</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed font-normal">{s.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      <footer className="bg-black p-3 text-[7px] text-gray-600 text-center border-t border-gray-900 uppercase tracking-widest">
-        {content.footer.confidential}
-      </footer>
+      {/* Metrics Strip */}
+      <section>
+        <div className="bg-white/[0.01] border border-white/5 rounded-[2.5rem] p-10 md:p-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            {content.financials.map((metric, i) => (
+              <div key={i} className="text-center lg:text-left">
+                <p className="text-[9px] text-gray-600 uppercase tracking-[0.4em] font-bold mb-4">{metric.label}</p>
+                <p className="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-3">{metric.value}</p>
+                <p className="text-[9px] text-[#FF8A00] font-bold uppercase tracking-[0.2em]">{metric.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Roadmap */}
+      <section>
+        <div className="bg-[#0D0D0D] border border-white/5 rounded-[2.5rem] p-10 md:p-20 relative overflow-hidden">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white uppercase tracking-tight mb-16 text-center">
+            Roadmap <span className="text-[#FF8A00] glow-orange">2026</span>
+          </h2>
+          
+          <div className="relative">
+            <div className="absolute top-1/2 left-0 w-full h-px bg-white/5 hidden lg:block -translate-y-1/2"></div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+              {currentRoadmap.map((item, idx) => (
+                <div key={idx} className="flex flex-col items-center lg:items-start group">
+                  <div className="w-14 h-14 rounded-xl bg-black border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#FF8A00] transition-all duration-300">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#FF8A00]"></div>
+                  </div>
+                  <div className="text-center lg:text-left">
+                    <span className="text-[9px] font-bold text-[#FF8A00] uppercase tracking-[0.3em] mb-2 block">{item.quarter}</span>
+                    <h4 className="text-lg font-bold text-white mb-3 uppercase tracking-tight group-hover:text-[#FF8A00] transition-colors">{item.title}</h4>
+                    <p className="text-xs text-gray-500 leading-relaxed font-normal">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Investment CTA Final */}
+      <section>
+        <div className="bg-[#FF8A00] rounded-[2.5rem] p-12 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl relative overflow-hidden group">
+          <div className="max-w-xl text-center lg:text-left relative z-10">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-black uppercase leading-[1.05] tracking-tight mb-8">
+              {lang === 'es' ? 'Construyendo el estándar' : 'Building the standard'} <br/>
+              <span className="text-white">post-MiCA</span>
+            </h2>
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+              <div className="bg-black/10 border border-black/5 px-4 py-2 rounded-xl">
+                <p className="text-[9px] text-black/50 uppercase font-bold tracking-widest mb-0.5">Valuation Cap</p>
+                <p className="text-xl font-extrabold text-black tracking-tight">{content.deal.valuationCap}</p>
+              </div>
+              <div className="bg-black/10 border border-black/5 px-4 py-2 rounded-xl">
+                <p className="text-[9px] text-black/50 uppercase font-bold tracking-widest mb-0.5">Instrument</p>
+                <p className="text-xl font-extrabold text-black tracking-tight">{content.deal.instrument}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center lg:text-right relative z-10 flex flex-col items-center lg:items-end gap-6">
+             <div>
+                <p className="text-black/40 text-[9px] font-bold uppercase tracking-[0.3em] mb-2">Round Target</p>
+                <p className="text-6xl md:text-8xl font-extrabold text-white tracking-tighter leading-none">{content.deal.target}</p>
+             </div>
+             <a 
+                href={VAULTBIT_SHARED.roundtableLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-black text-white px-8 py-4 rounded-full font-extrabold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-2xl"
+             >
+                {lang === 'es' ? 'Invertir Ahora' : 'Invest Now'}
+             </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
