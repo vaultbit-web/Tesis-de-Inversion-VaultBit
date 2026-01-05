@@ -4,4 +4,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  define: {
+    // Esto inyecta las variables de entorno de Vercel directamente en el build
+    'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+    'process.env': {}
+  }
 });
