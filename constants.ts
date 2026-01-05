@@ -135,6 +135,7 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
 export const VAULTBIT_SHARED = {
   name: "VaultBit",
   website: "www.vaultbit.es",
+  appUrl: "app.vaultbit.es",
   communityLink: "https://t.me/+L0jB1FwdNT5iZGE8",
   founder: {
     name: "Daniel Brosed Giral",
