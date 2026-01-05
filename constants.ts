@@ -1,8 +1,55 @@
 
 import { Language, VaultBitData, RoadmapItem, ChartData } from './types';
 
-export const TRANSLATIONS: Record<Language, VaultBitData> = {
+export interface ExtendedVaultBitData extends VaultBitData {
+  nav: { overview: string; deck: string };
+  deck: {
+    intro: string;
+    mission: string;
+    vision: string;
+    whyNow: {
+      title: string;
+      reasons: { title: string; desc: string }[];
+    };
+    pricing: {
+      title: string;
+      subtitle: string;
+      tiers: { name: string; price: string; period: string }[];
+    };
+    financialModel: {
+      revenue: string;
+      occupancy: string;
+      avgPrice: string;
+      note: string;
+    };
+    competition: {
+      title: string;
+      labels: string[];
+    };
+    expansion: {
+      title: string;
+      steps: { year: string; title: string; desc: string }[];
+    };
+    risks: {
+      title: string;
+      items: { category: string; risk: string; mitigation: string }[];
+    };
+    thesis: string[];
+  };
+  roundDetails: {
+    title: string;
+    instrument: string;
+    discount: string;
+    minTicket: string;
+    structure: string;
+    platform: string;
+    securityNote: string;
+  };
+}
+
+export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
   es: {
+    nav: { overview: "Vista General", deck: "Pitch Deck" },
     tagline: "Infraestructura Crítica para la Custodia de Activos Digitales",
     location: "Barcelona, España",
     round: "Pre-Seed Round",
@@ -27,6 +74,15 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
         { category: "GTM & Marketing", percentage: 10, details: ["Marketing B2B", "Reserva MiCA"] }
       ]
     },
+    roundDetails: {
+      title: "Condiciones de Inversión",
+      instrument: "BSA AIR (Safe Europeo)",
+      discount: "20% (Early Bird)",
+      minTicket: "10,000 €",
+      structure: "SPV Profesional (SCSp)",
+      platform: "Roundtable.eu (Líder en Europa)",
+      securityNote: "Proceso gestionado íntegramente por Roundtable, garantizando segregación de capital y seguridad jurídica."
+    },
     market: [
       { label: "Usuarios Cripto España", value: "4M+", description: "Mercado SAM impulsado por la regulación MiCA." },
       { label: "Usuarios Cripto EU", value: "96M", description: "Base total de usuarios potenciales en Europa." },
@@ -50,6 +106,64 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
       description: "Acceda a nuestra comunidad exclusiva en Telegram donde compartimos actualizaciones semanales, análisis del mercado MiCA e información privilegiada sobre el despliegue de infraestructura física.",
       button: "Entrar en la Comunidad"
     },
+    deck: {
+      intro: "La primera infraestructura europea diseñada para proteger llaves privadas bajo estándares de seguridad bancaria.",
+      mission: "Proteger de forma segura y confidencial las llaves privadas y dispositivos de custodia de criptoactivos mediante custodia física profesional.",
+      vision: "Convertirnos en el referente europeo en custodia física de criptoactivos, con presencia en los principales hubs financieros.",
+      whyNow: {
+        title: "Por qué ahora",
+        reasons: [
+          { title: "Regulación MiCA", desc: "Entrada en vigor del marco regulatorio europeo que exige mayores estándares de cumplimiento." },
+          { title: "Aversión al Riesgo", desc: "Mayor demanda de seguridad tras quiebras recientes de entidades centralizadas." },
+          { title: "Adopción Institucional", desc: "Entrada de grandes capitales que requieren custodia profesional física desconectada." }
+        ]
+      },
+      pricing: {
+        title: "Modelo de Negocio",
+        subtitle: "Alquiler de cajas de seguridad especializadas",
+        tiers: [
+          { name: "Caja S", price: "95€", period: "/mes" },
+          { name: "Caja M", price: "135€", period: "/mes" },
+          { name: "Caja L", price: "180€", period: "/mes" }
+        ]
+      },
+      financialModel: {
+        revenue: "726.000 €",
+        occupancy: "40%",
+        avgPrice: "121 €/mes",
+        note: "La estructura modular permite adaptar la distribución de cajas según la demanda del mercado."
+      },
+      competition: {
+        title: "Análisis Competitivo",
+        labels: ["Custodia Física", "Especialización Cripto", "Grado VII", "Privacidad", "Modelo Escalable"]
+      },
+      expansion: {
+        title: "Plan de Expansión",
+        steps: [
+          { year: "Año 1-2", title: "Consolidación", desc: "Optimización de la sede inicial en Barcelona." },
+          { year: "Año 3", title: "2ª Ubicación", desc: "Apertura en ciudad estratégica de alto potencial." },
+          { year: "Año 4-5", title: "Escalado", desc: "Expansión a 2-3 nuevas sedes en capitales clave." },
+          { year: "Año 6+", title: "Europa", desc: "Entrada en mercados con alta adopción cripto." }
+        ]
+      },
+      risks: {
+        title: "Riesgos & Mitigación",
+        items: [
+          { category: "Regulatorio", risk: "Evolución MiCA", mitigation: "Gobernanza activa y asesoría legal continua." },
+          { category: "Operativo", risk: "Intrusión/Sabotaje", mitigation: "Bóvedas Grado VII y seguridad multicapa." },
+          { category: "Mercado", risk: "Ciclos Cripto", mitigation: "Modelo diversificado de custodia física." },
+          { category: "Ocupación", risk: "Ritmo de captación", mitigation: "Go-to-market prudente y acuerdos B2B." }
+        ]
+      },
+      thesis: [
+        "Negocio de ingresos recurrentes y alta visibilidad",
+        "Punto de equilibrio bajo que reduce riesgo operativo",
+        "Márgenes elevados una vez estabilizada la ocupación",
+        "Activo físico defensivo con barreras de entrada reales",
+        "Demanda estructural impulsada por regulación y madurez",
+        "Modelo modular y replicable en capitales europeas"
+      ]
+    },
     dashboard: {
       label: "Solo Datos Internos",
       title: "Dashboard de Inversión Profunda",
@@ -67,6 +181,7 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
     }
   },
   en: {
+    nav: { overview: "Overview", deck: "Pitch Deck" },
     tagline: "Critical Infrastructure for Digital Asset Custody",
     location: "Barcelona, Spain",
     round: "Pre-Seed Round",
@@ -91,6 +206,15 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
         { category: "GTM & Marketing", percentage: 10, details: ["B2B Marketing", "MiCA Reserve"] }
       ]
     },
+    roundDetails: {
+      title: "Investment Terms",
+      instrument: "BSA AIR (European Safe)",
+      discount: "20% (Early Bird)",
+      minTicket: "€10,000",
+      structure: "Professional SPV (SCSp)",
+      platform: "Roundtable.eu (European Leader)",
+      securityNote: "Process fully managed by Roundtable, ensuring capital segregation and legal security."
+    },
     market: [
       { label: "Spain Crypto Users", value: "4M+", description: "SAM Market driven by MiCA regulation." },
       { label: "EU Crypto Users", value: "96M", description: "Total potential user base in Europe." },
@@ -113,6 +237,64 @@ export const TRANSLATIONS: Record<Language, VaultBitData> = {
       title: "VaultBit Private Community",
       description: "Access our exclusive Telegram community where we share weekly updates, MiCA market analysis, and insider information on physical infrastructure deployment.",
       button: "Enter Community"
+    },
+    deck: {
+      intro: "The first European infrastructure designed to protect private keys under banking security standards.",
+      mission: "To securely and confidentially protect private keys and cryptoasset custody devices through professional physical custody.",
+      vision: "To become the European reference in physical custody of cryptoassets, with a presence in the main financial hubs.",
+      whyNow: {
+        title: "Why Now",
+        reasons: [
+          { title: "MiCA Regulation", desc: "Implementation of the European regulatory framework requiring higher standards of compliance." },
+          { title: "Risk Aversion", desc: "Increased demand for security following recent bankruptcies of centralized entities." },
+          { title: "Institutional Adoption", desc: "Entry of large institutional capital requiring offline, professional physical custody." }
+        ]
+      },
+      pricing: {
+        title: "Business Model",
+        subtitle: "Specialized safety deposit box rental",
+        tiers: [
+          { name: "Box S", price: "95€", period: "/month" },
+          { name: "Box M", price: "135€", period: "/month" },
+          { name: "Box L", price: "180€", period: "/month" }
+        ]
+      },
+      financialModel: {
+        revenue: "€726,000",
+        occupancy: "40%",
+        avgPrice: "€121 /month",
+        note: "The modular structure allows box distribution to be adapted according to market demand."
+      },
+      competition: {
+        title: "Competitive Analysis",
+        labels: ["Physical Custody", "Crypto Specialization", "Grade VII", "Privacy", "Scalable Model"]
+      },
+      expansion: {
+        title: "Expansion Plan",
+        steps: [
+          { year: "Year 1-2", title: "Consolidation", desc: "Optimization of the initial Barcelona branch." },
+          { year: "Year 3", title: "2nd Location", desc: "Opening in a strategic high-potential city." },
+          { year: "Year 4-5", title: "Scaling", desc: "Expansion to 2-3 new locations in key capitals." },
+          { year: "Year 6+", title: "Europe", desc: "Entry into markets with high crypto adoption." }
+        ]
+      },
+      risks: {
+        title: "Risks & Mitigation",
+        items: [
+          { category: "Regulatory", risk: "MiCA Evolution", mitigation: "Active governance and continuous legal advice." },
+          { category: "Operational", risk: "Intrusion/Sabotage", mitigation: "Grade VII vaults and multi-layer security." },
+          { category: "Market", risk: "Crypto Cycles", mitigation: "Diversified physical custody model." },
+          { category: "Occupancy", risk: "Capture rate", mitigation: "Prudent go-to-market and B2B agreements." }
+        ]
+      },
+      thesis: [
+        "Recurring revenue business with high visibility",
+        "Low break-even point reducing operational risk",
+        "High margins once occupancy is stabilized",
+        "Defensive physical asset with real entry barriers",
+        "Structural demand driven by regulation and maturity",
+        "Modular and replicable model in European capitals"
+      ]
     },
     dashboard: {
       label: "Internal Data Only",

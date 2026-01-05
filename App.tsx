@@ -3,11 +3,13 @@ import React, { useState, useMemo, useEffect } from 'react';
 import OnePager from './components/OnePager';
 import InteractiveDashboard from './components/InteractiveDashboard';
 import CapitalLoungeCTA from './components/CapitalLoungeCTA';
+import PitchDeck from './components/PitchDeck';
 import { Language } from './types';
 import { TRANSLATIONS, VAULTBIT_SHARED } from './constants';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('es');
+  const [view, setView] = useState<'overview' | 'deck'>('overview');
   const content = useMemo(() => TRANSLATIONS[lang], [lang]);
 
   const toggleLanguage = () => {
@@ -16,7 +18,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [lang]);
+  }, [lang, view]);
 
   return (
     <div className="bg-[#050505] min-h-screen flex flex-col items-center selection:bg-[#FF8A00] selection:text-black font-host">
@@ -25,9 +27,20 @@ const App: React.FC = () => {
         <div className="flex items-center gap-4">
             <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375/mP43LZ32R1CBREy3/logo-principal-png-AGBzjqQ2gWtpMMzp.png" alt="VaultBit" className="h-7 md:h-8 object-contain" />
             <div className="hidden sm:block h-4 w-px bg-white/10 mx-2"></div>
-            <span className="hidden sm:block text-[9px] text-gray-500 font-bold uppercase tracking-[0.4em]">
-              {lang === 'es' ? 'PORTAL INVERSOR' : 'IR PORTAL'}
-            </span>
+            <div className="flex items-center gap-6">
+              <button 
+                onClick={() => setView('overview')}
+                className={`text-[9px] font-bold uppercase tracking-[0.3em] transition-colors ${view === 'overview' ? 'text-[#FF8A00]' : 'text-gray-500 hover:text-white'}`}
+              >
+                {content.nav.overview}
+              </button>
+              <button 
+                onClick={() => setView('deck')}
+                className={`text-[9px] font-bold uppercase tracking-[0.3em] transition-colors ${view === 'deck' ? 'text-[#FF8A00]' : 'text-gray-500 hover:text-white'}`}
+              >
+                {content.nav.deck}
+              </button>
+            </div>
         </div>
         
         <div className="flex items-center gap-8">
@@ -48,33 +61,36 @@ const App: React.FC = () => {
       <div className="h-16 w-full"></div>
 
       <main className="w-full">
-        {/* Parte 1: El OnePager Rediseñado */}
-        <section className="w-full pt-12 md:pt-16">
-          <OnePager lang={lang} />
-        </section>
+        {view === 'overview' ? (
+          <>
+            <section className="w-full pt-12 md:pt-16">
+              <OnePager lang={lang} />
+            </section>
 
-        {/* Lounge / Community */}
-        <section className="w-full max-w-7xl mx-auto px-6 py-16">
-          <CapitalLoungeCTA lang={lang} />
-        </section>
+            <section className="w-full max-w-7xl mx-auto px-6 py-16">
+              <CapitalLoungeCTA lang={lang} />
+            </section>
 
-        {/* Parte 2: Deep Dive Dashboard */}
-        <section id="dashboard" className="w-full py-24 bg-gradient-to-b from-black via-[#080808] to-[#050505] border-t border-white/5">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 px-6">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-[#FF8A00]/5 border border-[#FF8A00]/10 mb-6">
-                  <span className="text-[#FF8A00] text-[9px] font-bold uppercase tracking-[0.4em]">{content.dashboard.label}</span>
+            <section id="dashboard" className="w-full py-24 bg-gradient-to-b from-black via-[#080808] to-[#050505] border-t border-white/5">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-16 px-6">
+                  <div className="inline-block px-4 py-1.5 rounded-full bg-[#FF8A00]/5 border border-[#FF8A00]/10 mb-6">
+                      <span className="text-[#FF8A00] text-[9px] font-bold uppercase tracking-[0.4em]">{content.dashboard.label}</span>
+                  </div>
+                  <h2 className="text-4xl md:text-6xl font-extrabold text-white mt-4 tracking-tight uppercase leading-[1]">
+                      {content.dashboard.title}
+                  </h2>
+                  <p className="text-gray-500 mt-8 text-[10px] uppercase tracking-[0.2em] font-medium">
+                    {lang === 'es' ? 'Métricas internas y modelado de crecimiento' : 'Internal metrics & growth modeling'}
+                  </p>
+                </div>
+                <InteractiveDashboard lang={lang} />
               </div>
-              <h2 className="text-4xl md:text-6xl font-extrabold text-white mt-4 tracking-tight uppercase leading-[1]">
-                  {content.dashboard.title}
-              </h2>
-              <p className="text-gray-500 mt-8 text-[10px] uppercase tracking-[0.2em] font-medium">
-                {lang === 'es' ? 'Métricas internas y modelado de crecimiento' : 'Internal metrics & growth modeling'}
-              </p>
-            </div>
-            <InteractiveDashboard lang={lang} />
-          </div>
-        </section>
+            </section>
+          </>
+        ) : (
+          <PitchDeck lang={lang} />
+        )}
       </main>
 
       {/* Footer Institucional */}

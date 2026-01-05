@@ -33,17 +33,57 @@ const OnePager: React.FC<Props> = ({ lang }) => {
             {content.opportunity}
           </p>
 
-          <a 
-            href={VAULTBIT_SHARED.roundtableLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#FF8A00] hover:bg-white text-black font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl"
-          >
-            {lang === 'es' ? 'Invertir vía Roundtable' : 'Invest via Roundtable'}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a 
+              href={VAULTBIT_SHARED.roundtableLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-[#FF8A00] hover:bg-white text-black font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl"
+            >
+              {lang === 'es' ? 'Invertir vía Roundtable' : 'Invest via Roundtable'}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+            <div className="text-left">
+              <p className="text-[#FF8A00] text-[10px] font-bold uppercase tracking-widest leading-none mb-1">Roundtable Secure Platform</p>
+              <p className="text-gray-500 text-[10px] uppercase font-medium">{lang === 'es' ? 'Plataforma líder en SPVs europeos' : 'Lead European SPV platform'}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Round Transparency Section */}
+      <section className="bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-8 md:p-16">
+        <h2 className="text-2xl font-extrabold text-white uppercase tracking-tight mb-12 flex items-center gap-3">
+          <span className="text-[#FF8A00] text-3xl">●</span>
+          {content.roundDetails.title}
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl">
+            <p className="text-[9px] text-gray-500 uppercase tracking-widest mb-2">{lang === 'es' ? 'Instrumento' : 'Instrument'}</p>
+            <p className="text-xl font-bold text-white uppercase">{content.roundDetails.instrument}</p>
+          </div>
+          <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl">
+            <p className="text-[9px] text-[#FF8A00] uppercase tracking-widest mb-2">{lang === 'es' ? 'Beneficio Early Bird' : 'Early Bird Benefit'}</p>
+            <p className="text-xl font-bold text-white uppercase">{content.roundDetails.discount}</p>
+          </div>
+          <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl">
+            <p className="text-[9px] text-gray-500 uppercase tracking-widest mb-2">{lang === 'es' ? 'Inversión Mínima' : 'Min Ticket'}</p>
+            <p className="text-xl font-bold text-white uppercase">{content.roundDetails.minTicket}</p>
+          </div>
+          <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl">
+            <p className="text-[9px] text-gray-500 uppercase tracking-widest mb-2">{lang === 'es' ? 'Estructura Legal' : 'Legal Structure'}</p>
+            <p className="text-xl font-bold text-white uppercase">{content.roundDetails.structure}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-4 p-6 bg-white/[0.03] border border-white/5 rounded-2xl">
+          <svg className="w-6 h-6 text-[#FF8A00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.040L3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622l-.382-3.016z"></path>
+          </svg>
+          <p className="text-[10px] text-gray-400 font-medium uppercase tracking-widest leading-relaxed">
+            {content.roundDetails.securityNote}
+          </p>
         </div>
       </section>
 
