@@ -12,29 +12,6 @@ const OnePager: React.FC<Props> = ({ lang }) => {
   const deal = content.roundtableInfo;
   const comp = content.competition;
 
-  // Etiquetas traducidas para la tarjeta del Deal
-  const dealLabels = lang === 'es' ? {
-    allocation: "ASIGNACIÓN",
-    type: "TIPO DE DEAL",
-    instrument: "INSTRUMENTO",
-    interest: "INTERÉS",
-    maturity: "VENCIMIENTO",
-    discount: "DESCUENTO",
-    valuation: "VALORACIÓN",
-    cap: "VALUATION CAP", // Término estándar en la industria, se suele mantener
-    investButton: "INVERTIR EN ROUNDTABLE"
-  } : {
-    allocation: "ALLOCATION",
-    type: "DEAL TYPE",
-    instrument: "INSTRUMENT",
-    interest: "INTEREST RATE",
-    maturity: "MATURITY",
-    discount: "DISCOUNT",
-    valuation: "VALUATION",
-    cap: "VALUATION CAP",
-    investButton: "INVEST ON ROUNDTABLE"
-  };
-
   return (
     <div className="w-full max-w-6xl mx-auto space-y-12 md:space-y-24 px-4 sm:px-8 font-host overflow-hidden pb-16 md:pb-32">
       
@@ -64,7 +41,7 @@ const OnePager: React.FC<Props> = ({ lang }) => {
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#FF8A00] hover:bg-white text-black font-black text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.3em] px-8 md:px-10 py-4 md:py-5 rounded-xl transition-all duration-500 hover:scale-105 shadow-[0_15px_40px_rgba(255,138,0,0.2)]"
             >
-              {dealLabels.investButton}
+              {lang === 'es' ? 'INVERTIR EN ROUNDTABLE' : 'INVEST ON ROUNDTABLE'}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>
@@ -108,13 +85,13 @@ const OnePager: React.FC<Props> = ({ lang }) => {
             
             <div className="space-y-3 md:space-y-4">
                 {[
-                  { label: dealLabels.allocation, value: deal.allocation },
-                  { label: dealLabels.type, value: "Pre-Seed" },
-                  { label: dealLabels.instrument, value: deal.instrument },
-                  { label: dealLabels.interest, value: deal.interest },
-                  { label: dealLabels.maturity, value: deal.maturity },
-                  { label: dealLabels.discount, value: deal.discount },
-                  { label: dealLabels.valuation, value: deal.valType }
+                  { label: "ALLOCATION", value: deal.allocation },
+                  { label: "DEAL TYPE", value: "Pre-Seed" },
+                  { label: "INSTRUMENT", value: deal.instrument },
+                  { label: "INTEREST RATE", value: deal.interest },
+                  { label: "MATURITY", value: deal.maturity },
+                  { label: "DISCOUNT", value: deal.discount },
+                  { label: "VALUATION", value: deal.valType }
                 ].map((item, idx) => (
                   <div key={idx} className="flex justify-between items-center text-gray-500">
                       <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest shrink-0">{item.label}</span>
@@ -122,7 +99,7 @@ const OnePager: React.FC<Props> = ({ lang }) => {
                   </div>
                 ))}
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-                    <span className="text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-widest">{dealLabels.cap}</span>
+                    <span className="text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-widest">VALUATION CAP</span>
                     <span className="text-lg md:text-xl font-black text-[#FF8A00]">{deal.cap}</span>
                 </div>
             </div>
@@ -133,7 +110,7 @@ const OnePager: React.FC<Props> = ({ lang }) => {
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center bg-black text-white py-4 rounded-xl md:rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-[#FF8A00] transition-all mt-4"
             >
-              {dealLabels.investButton}
+              {lang === 'es' ? 'INVERTIR EN ROUNDTABLE' : 'INVEST ON ROUNDTABLE'}
             </a>
         </div>
       </section>
@@ -192,9 +169,7 @@ const OnePager: React.FC<Props> = ({ lang }) => {
           </div>
         </div>
         <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-gray-600 text-right">
-          {lang === 'es' 
-            ? "* ANÁLISIS BASADO EN CERTIFICACIÓN EN 1143-1 GRADO VII Y PROTOCOLOS AIR-GAP." 
-            : "* ANALYSIS BASED ON EN 1143-1 GRADE VII CERTIFICATION AND AIR-GAP PROTOCOLS."}
+          * ANÁLISIS BASADO EN CERTIFICACIÓN EN 1143-1 GRADO VII Y PROTOCOLOS AIR-GAP.
         </p>
       </section>
 

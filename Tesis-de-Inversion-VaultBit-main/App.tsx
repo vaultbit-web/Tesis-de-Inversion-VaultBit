@@ -128,7 +128,7 @@ const App: React.FC = () => {
             <nav className="flex flex-wrap justify-center gap-6 md:gap-10 mb-12 md:mb-16 text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-gray-600">
                 <a href={`https://${VAULTBIT_SHARED.website}`} target="_blank" className="hover:text-[#FF8A00] transition-colors">{lang === 'es' ? 'WEB OFICIAL' : 'OFFICIAL WEBSITE'}</a>
                 <a href={VAULTBIT_SHARED.roundtableLink} target="_blank" className="hover:text-[#FF8A00] transition-colors">ROUNDTABLE</a>
-                <a href={`mailto:${VAULTBIT_SHARED.contactEmail}`} className="hover:text-[#FF8A00] transition-colors">{lang === 'es' ? 'CONTACTO' : 'CONTACT'}</a>
+                <a href="mailto:danielbrosed@vaultbit.es" className="hover:text-[#FF8A00] transition-colors">{lang === 'es' ? 'CONTACTO' : 'CONTACT'}</a>
             </nav>
             <div className="p-6 md:p-10 bg-white/[0.02] border border-white/[0.05] rounded-[2rem] md:rounded-[2.5rem] mb-12 w-full">
                 <p className="text-[8px] md:text-[10px] text-gray-500 uppercase leading-relaxed tracking-[0.1em] md:tracking-widest font-bold max-w-3xl mx-auto">

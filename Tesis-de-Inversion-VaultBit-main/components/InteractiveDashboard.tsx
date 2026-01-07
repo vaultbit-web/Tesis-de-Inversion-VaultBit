@@ -10,7 +10,6 @@ interface Props {
 
 const InteractiveDashboard: React.FC<Props> = ({ lang }) => {
   const content = TRANSLATIONS[lang];
-  const deal = content.deal;
 
   return (
     <div className="max-w-7xl mx-auto space-y-10 md:space-y-20 font-host w-full">
@@ -60,43 +59,16 @@ const InteractiveDashboard: React.FC<Props> = ({ lang }) => {
         </div>
       </div>
 
-      {/* Allocation of Funds Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-24">
-        {/* Left: Main info */}
-        <div className="space-y-6 md:space-y-8 flex flex-col justify-center">
-            <h3 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tighter leading-none">{content.dashboard.capexTitle}</h3>
-            <p className="text-xs md:text-base text-gray-400 font-medium uppercase tracking-widest leading-relaxed max-w-md">
-              {content.dashboard.capexSub}
-            </p>
-            <div className="inline-block px-8 md:px-12 py-4 md:py-6 bg-[#FF8A00] text-black rounded-[1.5rem] font-black text-3xl md:text-5xl uppercase tracking-tighter shadow-[0_10px_30px_rgba(255,138,0,0.3)] self-start">
-               1.1M €
-            </div>
-        </div>
-
-        {/* Right: Breakdown Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-            {deal.allocation.map((item, idx) => (
-                <div key={idx} className="p-6 md:p-8 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col justify-between group hover:bg-white/[0.05] hover:border-[#FF8A00]/30 transition-all duration-300">
-                    <div className="flex justify-between items-start mb-4 md:mb-6">
-                        <div className="w-10 h-10 rounded-full bg-[#FF8A00]/10 flex items-center justify-center text-[#FF8A00] text-xs font-black">
-                            {item.percentage}%
-                        </div>
-                        <span className="text-lg md:text-xl font-black text-white tracking-tight">{item.amount}</span>
-                    </div>
-                    <div>
-                        <h4 className="text-sm md:text-base font-black text-white uppercase mb-2 tracking-wide">{item.category}</h4>
-                        <div className="space-y-1">
-                            {item.details.map((detail, dIdx) => (
-                                <p key={dIdx} className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">• {detail}</p>
-                            ))}
-                        </div>
-                    </div>
-                    {/* Progress Bar Visual */}
-                    <div className="w-full h-1 bg-white/10 rounded-full mt-4 md:mt-6 overflow-hidden">
-                        <div className="h-full bg-[#FF8A00] rounded-full transition-all duration-1000 ease-out" style={{ width: `${item.percentage}%` }}></div>
-                    </div>
-                </div>
-            ))}
+      {/* simplified investment */}
+      <div className="bg-white/5 p-8 md:p-14 rounded-[2rem] md:rounded-[3rem] border border-white/10 text-center space-y-5 md:space-y-8">
+        <h3 className="text-xl md:text-3xl font-black text-white uppercase tracking-tighter">{content.dashboard.capexTitle}</h3>
+        <p className="text-gray-400 text-xs md:text-lg font-bold uppercase tracking-widest leading-relaxed max-w-4xl mx-auto">
+          {lang === 'es' 
+            ? 'La inversión total de 1.100.000 € garantiza la creación de infraestructura crítica certificada Grado VII.' 
+            : 'The total €1,100,000 investment ensures the creation of Grade VII certified critical infrastructure.'}
+        </p>
+        <div className="inline-block px-8 md:px-10 py-3 md:py-4 bg-[#FF8A00] text-black rounded-xl md:rounded-2xl font-black text-base md:text-2xl uppercase tracking-widest shadow-lg shadow-[#FF8A00]/20">
+           1.1M €
         </div>
       </div>
     </div>

@@ -61,12 +61,6 @@ export interface ExtendedVaultBitData extends VaultBitData {
     };
     thesis: { icon: string; title: string; desc: string }[];
   };
-  landing: {
-    hero: { title: string; subtitle: string; cta: string };
-    features: { title: string; desc: string }[];
-    security: { title: string; desc: string; list: string[] };
-    products: { title: string; subtitle: string; list: { name: string; price: string; desc: string }[] };
-  };
 }
 
 export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
@@ -126,10 +120,8 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
       instrument: "Nota Convertible",
       valuationCap: "6.000.000 €",
       allocation: [
-        { category: "CAPEX Técnico", percentage: 68, amount: "750k €", details: ["Obra Civil & Bóveda Grado VII", "Blindaje y Sistemas Activos"] },
-        { category: "Runway Operativo", percentage: 22, amount: "240k €", details: ["12 Meses OPEX Garantizado", "Personal y Seguridad"] },
-        { category: "GTM & Marketing", percentage: 5, amount: "60k €", details: ["Pipeline B2B & Brokers", "Lanzamiento Institucional"] },
-        { category: "Reserva & Legal", percentage: 5, amount: "50k €", details: ["Adaptación MiCA", "Contingencias"] }
+        { category: "Infraestructura Crítica", percentage: 80, details: ["Construcción Hub 1 BCN", "Seguridad Activa"] },
+        { category: "Escalado Estratégico", percentage: 20, details: ["GTM Institucional", "Licencias MiCA"] }
       ]
     },
     market: [
@@ -210,7 +202,7 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
         },
         {
           icon: "moat",
-          title: "Tech Moat",
+          title: "Moat Tecnológico",
           desc: "Barrera de entrada inexpugnable basada en certificaciones Grado VII y protocolos de seguridad de banca central."
         },
         {
@@ -233,38 +225,12 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
       chartRevenue: "Ingresos",
       chartEbitda: "EBITDA",
       chartNote: "Datos proyectados bajo escenario conservador de mercado.",
-      capexTitle: "Destino de los Fondos",
-      capexSub: "Estructura de capital eficiente diseñada para maximizar el runway y la seguridad."
+      capexTitle: "Inversión Estratégica",
+      capexSub: "Capital destinado al despliegue de infraestructura crítica."
     },
     footer: {
       confidential: "DOCUMENTO CONFIDENCIAL • SOLO PARA INVERSORES ROUNDTABLE",
       rights: "© 2026 VaultBit Custody S.L. Todos los derechos reservados."
-    },
-    landing: {
-      hero: {
-        title: "Custodia Física de Grado VII",
-        subtitle: "Infraestructura crítica para la protección definitiva de activos digitales.",
-        cta: "Acceso Inversores"
-      },
-      features: [
-        { title: "Blindaje Certificado", desc: "Bóvedas EN 1143-1 Grado VII con resistencia a ataques térmicos y mecánicos." },
-        { title: "Protocolo Air-Gap", desc: "Aislamiento total de red. Las llaves privadas nunca tocan internet." },
-        { title: "Acceso Soberano", desc: "El cliente mantiene el control total mediante biometría multicapa." }
-      ],
-      security: {
-        title: "El estándar de seguridad más alto de Europa",
-        desc: "VaultBit redefine la custodia mediante la combinación de ingeniería de seguridad física y protocolos criptográficos.",
-        list: ["Cámaras Acorazadas Grado VII", "Biometría de Iris y Vascular", "Monitorización 24/7 CRA", "Seguro de Specie"]
-      },
-      products: {
-        title: "Planes de Custodia",
-        subtitle: "Soluciones escalables para particulares e instituciones.",
-        list: [
-          { name: "Essential", price: "95€ / mes", desc: "Para inversores individuales. Custodia física básica en bóveda compartida." },
-          { name: "Professional", price: "135€ / mes", desc: "Para Family Offices. Caja de seguridad privada con acceso biométrico." },
-          { name: "Institutional", price: "Consultar", desc: "Para Exchanges y Fondos. Bóveda dedicada y protocolos a medida." }
-        ]
-      }
     }
   },
   en: {
@@ -323,10 +289,8 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
       instrument: "Convertible Note",
       valuationCap: "€6,000,000",
       allocation: [
-        { category: "Tech CAPEX", percentage: 68, amount: "€750k", details: ["Civil Works & Grade VII Vault", "Active Security Systems"] },
-        { category: "Operational Runway", percentage: 22, amount: "€240k", details: ["12 Months OPEX Guaranteed", "Staff & Security"] },
-        { category: "GTM & Marketing", percentage: 5, amount: "€60k", details: ["B2B Pipeline & Brokers", "Institutional Launch"] },
-        { category: "Legal & Reserve", percentage: 5, amount: "€50k", details: ["MiCA Adaptation", "Contingencies"] }
+        { category: "Critical Infra", percentage: 80, details: ["Hub 1 BCN Construction", "Active Security"] },
+        { category: "Strategic Scaling", percentage: 20, details: ["Institutional GTM", "MiCA Licensing"] }
       ]
     },
     market: [
@@ -430,38 +394,12 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
       chartRevenue: "Revenue",
       chartEbitda: "EBITDA",
       chartNote: "Projected data under conservative market scenario.",
-      capexTitle: "Use of Funds",
-      capexSub: "Efficient capital structure designed to maximize runway and security."
+      capexTitle: "Strategic Investment",
+      capexSub: "Capital destined for critical infrastructure deployment."
     },
     footer: {
       confidential: "CONFIDENTIAL DOCUMENT • ROUNDTABLE INVESTORS ACCESS ONLY",
       rights: "© 2026 VaultBit Custody S.L. All rights reserved."
-    },
-    landing: {
-      hero: {
-        title: "Grade VII Physical Custody",
-        subtitle: "Critical infrastructure for the ultimate protection of digital assets.",
-        cta: "Investor Access"
-      },
-      features: [
-        { title: "Certified Armor", desc: "EN 1143-1 Grade VII vaults resistant to thermal and mechanical attacks." },
-        { title: "Air-Gap Protocol", desc: "Total network isolation. Private keys never touch the internet." },
-        { title: "Sovereign Access", desc: "Client maintains full control via multi-layer biometrics." }
-      ],
-      security: {
-        title: "Europe's Highest Security Standard",
-        desc: "VaultBit redefines custody by combining physical security engineering and cryptographic protocols.",
-        list: ["Grade VII Armored Vaults", "Iris & Vascular Biometrics", "24/7 CRA Monitoring", "Specie Insurance"]
-      },
-      products: {
-        title: "Custody Plans",
-        subtitle: "Scalable solutions for individuals and institutions.",
-        list: [
-          { name: "Essential", price: "€95 / month", desc: "For individual investors. Basic physical custody in shared vault." },
-          { name: "Professional", price: "€135 / month", desc: "For Family Offices. Private safety deposit box with biometric access." },
-          { name: "Institutional", price: "Consult", desc: "For Exchanges and Funds. Dedicated vault and bespoke protocols." }
-        ]
-      }
     }
   }
 };
@@ -472,7 +410,6 @@ export const VAULTBIT_SHARED = {
   appUrl: "app.vaultbit.es",
   communityLink: "https://t.me/+L0jB1FwdNT5iZGE8",
   roundtableLink: "https://app.roundtable.eu/i/cs4GsSmL", 
-  contactEmail: "info@vaultbit.es",
   founder: {
     name: "Daniel Brosed Giral",
     role: "Founder & CEO",
@@ -496,11 +433,10 @@ export const ROADMAP: Record<Language, RoadmapItem[]> = {
   ]
 };
 
-// Fuente: Plan de Empresa VaultBit 2026 - Página 25 (10.7 Proyección financiera a 5 años)
 export const PROJECTION_DATA: ChartData[] = [
-  { name: '2026', revenue: 472000, ebitda: 182000 },  // Año 1 (65%)
-  { name: '2027', revenue: 617000, ebitda: 327000 },  // Año 2 (85%)
-  { name: '2028', revenue: 1160000, ebitda: 560000 }, // Año 3 (80%)
-  { name: '2029', revenue: 1850000, ebitda: 970000 }, // Año 4 (85%)
-  { name: '2030', revenue: 2470000, ebitda: 1300000 },// Año 5 (85%)
+  { name: '2026', revenue: 472000, ebitda: 182000 },
+  { name: '2027', revenue: 726000, ebitda: 435000 },
+  { name: '2028', revenue: 1450000, ebitda: 870000 },
+  { name: '2029', revenue: 2170000, ebitda: 1300000 },
+  { name: '2030', revenue: 3200000, ebitda: 1920000 },
 ];

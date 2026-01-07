@@ -22,7 +22,6 @@ export interface ChartData {
 export interface FundAllocation {
   category: string;
   percentage: number;
-  amount?: string;
   details: string[];
 }
 
