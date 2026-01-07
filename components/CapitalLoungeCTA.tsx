@@ -21,20 +21,20 @@ const CapitalLoungeCTA: React.FC<Props> = ({ lang }) => {
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF8A00]/10 blur-[120px] pointer-events-none rounded-full"></div>
       
       <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl">
-        <div className="bg-[#FF8A00]/10 border border-[#FF8A00]/20 text-[#FF8A00] text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] px-6 py-2 rounded-full mb-8 md:mb-10 shadow-lg backdrop-blur-md">
+        <div className="bg-[#FF8A00]/10 border border-[#FF8A00]/20 text-[#FF8A00] text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] px-6 py-2 rounded-full mb-6 md:mb-8 shadow-lg backdrop-blur-md">
           {content.lounge.badge}
         </div>
-        <h3 className="text-2xl md:text-5xl font-black text-white mb-6 md:mb-8 uppercase tracking-tighter leading-tight text-balance">
+        <h3 className="text-2xl md:text-4xl font-black text-white mb-5 md:mb-6 uppercase tracking-tighter leading-tight text-balance">
           {content.lounge.title}
         </h3>
-        <p className="text-xs md:text-xl text-gray-400 font-bold leading-relaxed uppercase tracking-wide opacity-80 mb-8 md:mb-12">
+        <p className="text-xs md:text-lg text-gray-400 font-bold leading-relaxed uppercase tracking-wide opacity-80 mb-8 md:mb-10">
           {content.lounge.description}
         </p>
         
         <a 
           href={VAULTBIT_SHARED.communityLink}
           target="_blank"
-          className="w-full sm:w-auto bg-[#FF8A00] hover:bg-white text-black px-10 md:px-14 py-5 md:py-6 rounded-2xl font-black text-[11px] md:text-[13px] uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-500 shadow-[0_20px_50px_rgba(255,138,0,0.3)] flex items-center justify-center gap-4 hover:scale-105 active:scale-95"
+          className="w-full sm:w-auto bg-[#FF8A00] hover:bg-white text-black px-10 md:px-12 py-4 md:py-5 rounded-2xl font-black text-[11px] md:text-[13px] uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-500 shadow-[0_20px_50px_rgba(255,138,0,0.3)] flex items-center justify-center gap-4 hover:scale-105 active:scale-95"
         >
           <TelegramIcon />
           {content.lounge.button}

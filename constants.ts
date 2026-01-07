@@ -7,6 +7,8 @@ export interface ExtendedVaultBitData extends VaultBitData {
     title: string;
     spv: string;
     instrument: string;
+    interest: string;
+    maturity: string;
     discount: string;
     cap: string;
     allocation: string;
@@ -57,7 +59,7 @@ export interface ExtendedVaultBitData extends VaultBitData {
       title: string;
       items: { category: string; risk: string; mitigation: string }[];
     };
-    thesis: string[];
+    thesis: { icon: string; title: string; desc: string }[];
   };
 }
 
@@ -71,7 +73,9 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
     roundtableInfo: {
       title: "Información del Deal",
       spv: "SCSp Luxemburgo",
-      instrument: "BSA AIR",
+      instrument: "Nota Convertible",
+      interest: "4% Anual",
+      maturity: "15/01/2027",
       discount: "20%",
       cap: "6.000.000 €",
       allocation: "1.100.000 €",
@@ -113,7 +117,7 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
     ],
     deal: {
       target: "1.100.000 €",
-      instrument: "BSA AIR",
+      instrument: "Nota Convertible",
       valuationCap: "6.000.000 €",
       allocation: [
         { category: "Infraestructura Crítica", percentage: 80, details: ["Construcción Hub 1 BCN", "Seguridad Activa"] },
@@ -191,10 +195,26 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
         ]
       },
       thesis: [
-        "Oportunidad de inversión basada en infraestructura real, no en especulación",
-        "Moat técnico inexpugnable certificado bajo estándares de banca central",
-        "Modelo escalable de SaaS Físico con márgenes operativos del 60%",
-        "Negocio de ingresos recurrentes y alta visibilidad en un sector en maduración"
+        {
+          icon: "real",
+          title: "Infraestructura Tangible",
+          desc: "Inversión respaldada por activos físicos críticos y certificables (EN 1143-1), eliminando la volatilidad de la especulación pura."
+        },
+        {
+          icon: "moat",
+          title: "Moat Tecnológico",
+          desc: "Barrera de entrada inexpugnable basada en certificaciones Grado VII y protocolos de seguridad de banca central."
+        },
+        {
+          icon: "saas",
+          title: "SaaS Físico Escalable",
+          desc: "Modelo de ingresos recurrentes de alta visibilidad con márgenes EBITDA del 60% y payback proyectado de 1.7 años."
+        },
+        {
+          icon: "market",
+          title: "Momentum Regulatorio",
+          desc: "Captura de valor estratégica ante la entrada en vigor de MiCA y la creciente demanda institucional de autocustodia protegida."
+        }
       ]
     },
     dashboard: {
@@ -222,7 +242,9 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
     roundtableInfo: {
       title: "Deal Information",
       spv: "Luxembourg SCSp",
-      instrument: "BSA AIR",
+      instrument: "Convertible Note",
+      interest: "4% Annual",
+      maturity: "01/15/2027",
       discount: "20%",
       cap: "€6,000,000",
       allocation: "€1,100,000",
@@ -264,7 +286,7 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
     ],
     deal: {
       target: "€1,100,000",
-      instrument: "BSA AIR",
+      instrument: "Convertible Note",
       valuationCap: "€6,000,000",
       allocation: [
         { category: "Critical Infra", percentage: 80, details: ["Hub 1 BCN Construction", "Active Security"] },
@@ -342,10 +364,26 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
         ]
       },
       thesis: [
-        "Real infrastructure-based investment opportunity, not speculation",
-        "Impregnable technical moat certified under central bank standards",
-        "Scalable Physical SaaS model with 60% operating margins",
-        "Recurring revenue business with high visibility in a maturing sector"
+        {
+          icon: "real",
+          title: "Tangible Infrastructure",
+          desc: "Investment backed by critical physical assets (EN 1143-1), independent of pure token speculation."
+        },
+        {
+          icon: "moat",
+          title: "Tech Moat",
+          desc: "Impregnable defensive barrier certified under central bank standards (Grade VII)."
+        },
+        {
+          icon: "saas",
+          title: "Scalable Physical SaaS",
+          desc: "High-fidelity recurring revenue model with projected 60% EBITDA margins and 1.7yr payback."
+        },
+        {
+          icon: "market",
+          title: "Regulatory Momentum",
+          desc: "Immediate value capture upon MiCA enforcement and qualified institutional custody demand."
+        }
       ]
     },
     dashboard: {
