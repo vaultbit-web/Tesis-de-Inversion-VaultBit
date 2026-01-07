@@ -149,9 +149,9 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
       whyNow: {
         title: "CONTEXTO ESTRATÉGICO",
         reasons: [
-          { title: "Regulación MiCA", desc: "Exigencia inmediata de estándares bancarios para cripto-activos." },
-          { title: "Fragilidad Software", desc: "Hackeos constantes demuestran que el código no es suficiente." },
-          { title: "Demanda B2B", desc: "Family Offices e instituciones buscan resguardo físico soberano." }
+          { title: "Regulación MiCA", desc: "Marco legal que exige a las entidades financieras estándares de custodia Grado VII, convirtiendo el cumplimiento en un imperativo operativo para operar en la UE." },
+          { title: "Fragilidad Software", desc: "Hackeos constantes demuestran que el código no es suficiente; la custodia física desconectada es la única barrera real contra el riesgo sistémico digital." },
+          { title: "Demanda B2B", desc: "Family Offices e instituciones buscan resguardo físico soberano para mitigar riesgos de contraparte en exchanges centralizados." }
         ]
       },
       unitEconomics: {
@@ -300,9 +300,9 @@ export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
       whyNow: {
         title: "STRATEGIC CONTEXT",
         reasons: [
-          { title: "MiCA Regulation", desc: "Immediate requirement of banking standards for crypto-assets." },
-          { title: "Software Fragility", desc: "Constant hacks prove that code alone is not enough." },
-          { title: "B2B Demand", desc: "Family Offices and institutions seek sovereign physical protection." }
+          { title: "MiCA Regulation", desc: "Legal framework requiring financial entities to meet Grade VII custody standards, making compliance an operational imperative for EU operations." },
+          { title: "Software Fragility", desc: "Constant hacks prove that code alone is not enough; disconnected physical custody is the only real barrier against digital systemic risk." },
+          { title: "B2B Demand", desc: "Family Offices and institutions seek sovereign physical protection to mitigate counterparty risks in centralized exchanges." }
         ]
       },
       unitEconomics: {

@@ -25,6 +25,23 @@ const SectionIcons = {
     <svg className="w-6 h-6 text-[#FF8A00]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
     </svg>
+  ),
+  MiCA: () => (
+    <svg className="w-8 h-8 text-[#FF8A00]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M3 6h18M3 12h18M3 18h18M7 3v18M17 3v18" strokeLinecap="round" />
+    </svg>
+  ),
+  Fragility: () => (
+    <svg className="w-8 h-8 text-[#FF8A00]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="M8 11l3 3 5-5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  Demand: () => (
+    <svg className="w-8 h-8 text-[#FF8A00]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M3 21h18M3 10h18M5 10V7a2 2 0 012-2h10a2 2 0 012 2v3" />
+      <path d="M9 21v-4a1 1 0 011-1h4a1 1 0 011 1v4" />
+    </svg>
   )
 };
 
@@ -174,6 +191,27 @@ const PitchDeck: React.FC<Props> = ({ lang }) => {
           <p className="text-lg md:text-2xl font-bold uppercase leading-snug tracking-tight text-white/95">{content.deck.vision}</p>
         </div>
       </div>
+
+      {/* Why Now Section */}
+      <section className="space-y-12 md:space-y-16">
+        <div className="text-center md:text-left">
+          <h2 className="text-[10px] md:text-[12px] text-[#FF8A00] font-black uppercase tracking-[0.4em] md:tracking-[0.6em] mb-4 md:mb-8">{lang === 'es' ? 'CONTEXTO ESTRATÉGICO' : 'STRATEGIC CONTEXT'}</h2>
+          <h3 className="text-3xl md:text-6xl font-black uppercase tracking-tighter leading-none">{content.deck.whyNow.title}</h3>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {content.deck.whyNow.reasons.map((reason, i) => (
+            <div key={i} className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] group hover:border-[#FF8A00]/40 transition-all">
+              <div className="mb-6">
+                {i === 0 && <SectionIcons.MiCA />}
+                {i === 1 && <SectionIcons.Fragility />}
+                {i === 2 && <SectionIcons.Demand />}
+              </div>
+              <h4 className="text-xl md:text-2xl font-black uppercase text-white mb-4 leading-tight">{reason.title}</h4>
+              <p className="text-xs md:text-sm font-bold text-gray-400 uppercase tracking-tight leading-relaxed">{reason.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Ferrimax Section */}
       <section className="space-y-12 md:space-y-20">
