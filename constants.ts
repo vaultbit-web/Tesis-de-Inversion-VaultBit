@@ -3,6 +3,32 @@ import { Language, VaultBitData, RoadmapItem, ChartData } from './types';
 
 export interface ExtendedVaultBitData extends VaultBitData {
   nav: { overview: string; deck: string };
+  roundtableInfo: {
+    title: string;
+    spv: string;
+    instrument: string;
+    discount: string;
+    cap: string;
+    allocation: string;
+    industry: string;
+    location: string;
+    valType: string;
+  };
+  competition: {
+    title: string;
+    subtitle: string;
+    headers: string[];
+    rows: {
+      name: string;
+      values: boolean[];
+    }[];
+  };
+  ferrimax: {
+    title: string;
+    subtitle: string;
+    features: { title: string; desc: string }[];
+    certifications: string[];
+  };
   deck: {
     intro: string;
     mission: string;
@@ -11,23 +37,20 @@ export interface ExtendedVaultBitData extends VaultBitData {
       title: string;
       reasons: { title: string; desc: string }[];
     };
-    pricing: {
+    unitEconomics: {
       title: string;
-      subtitle: string;
-      tiers: { name: string; price: string; period: string }[];
+      metrics: { label: string; value: string; detail: string }[];
     };
-    financialModel: {
-      revenue: string;
-      occupancy: string;
-      avgPrice: string;
-      note: string;
-    };
-    competition: {
+    validation: {
       title: string;
-      labels: string[];
+      total: string;
+      sectors: string[];
+      legal: string[];
     };
     expansion: {
       title: string;
+      subtitle: string;
+      goal: string;
       steps: { year: string; title: string; desc: string }[];
     };
     risks: {
@@ -36,279 +59,308 @@ export interface ExtendedVaultBitData extends VaultBitData {
     };
     thesis: string[];
   };
-  roundDetails: {
-    title: string;
-    instrument: string;
-    discount: string;
-    minTicket: string;
-    structure: string;
-    platform: string;
-    securityNote: string;
-  };
 }
 
 export const TRANSLATIONS: Record<Language, ExtendedVaultBitData> = {
   es: {
-    nav: { overview: "Vista General", deck: "Pitch Deck" },
-    tagline: "Infraestructura Crítica para la Custodia de Activos Digitales",
+    nav: { overview: "ANÁLISIS ESTRATÉGICO", deck: "TESIS DE INVERSIÓN" },
+    tagline: "El Estándar de Custodia Física Grado VII",
     location: "Barcelona, España",
-    round: "Pre-Seed Round",
-    opportunity: "VaultBit se posiciona como el primer operador europeo de infraestructura física Grado VII especializado en la custodia de llaves privadas y activos digitales. Resolvemos el 'Trilema de la Custodia' mediante un modelo de SaaS Físico ('Storage-as-a-Service') escalable, con márgenes operativos del 60% y barreras de entrada inexpugnables, diseñado para liderar la era post-MiCA.",
-    problem: [
-      { title: "Vulnerabilidad Física", desc: "El 23% de todo el Bitcoin está perdido para siempre. Robos en domicilios y pérdida de hardware wallets." },
-      { title: "Riesgo Sistémico", desc: "Hacks a exchanges (FTX) y phishing avanzado que comprometen la custodia digital." },
-      { title: "Herencia Bloqueada", desc: "Inexistencia de protocolos legales efectivos para la transmisión de patrimonio digital." }
-    ],
-    solution: [
-      { title: "Grado VII (EN 1143-1)", desc: "Estándar de Banco Central. Resistencia extrema a lanza térmica y explosivos." },
-      { title: "Total Air-Gap", desc: "Aislamiento físico absoluto de internet. Inmune a hackeos remotos y exploits." },
-      { title: "Partner: Ferrimax", desc: "Alianza con el líder mundial en seguridad física bancaria para el despliegue técnico." }
-    ],
-    deal: {
-      target: "€1,100,000",
+    round: "PRE-SEED ROUND • ROUNDTABLE EXCLUSIVE",
+    opportunity: "VaultBit es el primer operador europeo de infraestructura crítica Grado VII especializado en la custodia de activos digitales bajo estándares de banca central. Resolvemos la vulnerabilidad física mediante un modelo de 'Storage as a Service' (SaaS Físico) inexpugnable.",
+    roundtableInfo: {
+      title: "Información del Deal",
+      spv: "SCSp Luxemburgo",
       instrument: "BSA AIR",
-      valuationCap: "€6,000,000",
-      allocation: [
-        { category: "CAPEX Técnico", percentage: 70, details: ["Bóveda Grado VII", "Módulos Cajas", "Blindaje", "Biometría"] },
-        { category: "Runway Operativo", percentage: 20, details: ["OPEX 12 meses", "Seguridad", "Personal"] },
-        { category: "GTM & Marketing", percentage: 10, details: ["Marketing B2B", "Reserva MiCA"] }
+      discount: "20%",
+      cap: "6.000.000 €",
+      allocation: "1.100.000 €",
+      industry: "Blockchain / Crypto / Web3",
+      location: "España",
+      valType: "Pre-Money"
+    },
+    competition: {
+      title: "Posicionamiento Estratégico",
+      subtitle: "Mientras el mercado ofrece soluciones parciales, VaultBit es el único proveedor europeo que combina seguridad física certificada con especialización cripto y un modelo escalable.",
+      headers: ["Empresa", "Custodia Física", "Especialización Cripto", "Grado VII", "Privacidad", "Modelo Escalable"],
+      rows: [
+        { name: "VaultBit", values: [true, true, true, true, true] },
+        { name: "Bancos", values: [true, false, true, false, false] },
+        { name: "Exchanges", values: [false, true, false, false, true] },
+        { name: "Empresas Seguridad", values: [true, false, false, false, false] },
+        { name: "Custodios Digitales", values: [false, true, false, false, true] }
       ]
     },
-    roundDetails: {
-      title: "Condiciones de Inversión",
-      instrument: "BSA AIR (Safe Europeo)",
-      discount: "20% (Early Bird)",
-      minTicket: "10,000 €",
-      structure: "SPV Profesional (SCSp)",
-      platform: "Roundtable.eu (Líder en Europa)",
-      securityNote: "Proceso gestionado íntegramente por Roundtable, garantizando segregación de capital y seguridad jurídica."
+    ferrimax: {
+      title: "Pilar Tecnológico: Ferrimax",
+      subtitle: "Acuerdo estratégico con el líder europeo en infraestructura de alta seguridad para la construcción de nuestros hubs.",
+      features: [
+        { title: "Blindaje Grado VII", desc: "Cámaras acorazadas y puertas certificadas EN 1143-1 con composites de altas prestaciones y armaduras térmicas." },
+        { title: "Control FMX ACS", desc: "Sistema de gestión electrónica con biometría multicapa (facial, iris, mano) y auditoría total de accesos." },
+        { title: "Seguridad Dual", desc: "Protocolo de llave prisionera y anulación manual de emergencia solo accesible bajo jerarquía institucional." }
+      ],
+      certifications: ["UNE-EN 1143-1 GRADO VII", "UNE-EN 1300 CLASE C", "SISTEMA FMX ACS"]
+    },
+    problem: [
+      { title: "Fragilidad Digital", desc: "El software es hackeable. El hardware aislado es la única defensa real." },
+      { title: "Error Humano", desc: "El 23% de Bitcoin está perdido por mala gestión de claves físicas." },
+      { title: "Riesgo de Contraparte", desc: "Las instituciones exigen ahora custodia física soberana y desconectada." }
+    ],
+    solution: [
+      { title: "Bóvedas Grado VII", desc: "Infraestructura certificada EN 1143-1 contra ataques térmicos." },
+      { title: "Protocolo Air-Gap", desc: "Aislamiento total de la red. Si no está online, no existe riesgo remoto." },
+      { title: "Soberanía de Acceso", desc: "El cliente mantiene el control total. Nosotros solo damos el blindaje." }
+    ],
+    deal: {
+      target: "1.100.000 €",
+      instrument: "BSA AIR",
+      valuationCap: "6.000.000 €",
+      allocation: [
+        { category: "Infraestructura Crítica", percentage: 80, details: ["Construcción Hub 1 BCN", "Seguridad Activa"] },
+        { category: "Escalado Estratégico", percentage: 20, details: ["GTM Institucional", "Licencias MiCA"] }
+      ]
     },
     market: [
-      { label: "Usuarios Cripto España", value: "4M+", description: "Mercado SAM impulsado por la regulación MiCA." },
-      { label: "Usuarios Cripto EU", value: "96M", description: "Base total de usuarios potenciales en Europa." },
-      { label: "TAM Estimado", value: "€1.4B", description: "Valor total del mercado de custodia premium." }
+      { label: "Ocupación Breakeven", value: "40%", description: "Eficiencia operativa extrema." },
+      { label: "Facturación por Hub", value: "726k €", description: "Ingreso anual recurrente proyectado." },
+      { label: "Margen EBITDA", value: "60%", description: "Rentabilidad neta del SaaS Físico." }
     ],
     financials: [
-      { label: "Margen EBITDA", value: "60%", description: "Alta rentabilidad operativa recurrente." },
-      { label: "Ingresos Anuales", value: "€726k", description: "Proyección por sede (Sede Barcelona al 100%)." },
-      { label: "Breakeven", value: "40%", description: "Punto de equilibrio bajo por sede." }
+      { label: "Inversión Total", value: "1.1M €", description: "Capital destinado a infraestructura y expansión." },
+      { label: "Payback Proyectado", value: "1.7 Años", description: "Retorno de inversión técnica por sede." },
+      { label: "Valuation Cap", value: "6.0M €", description: "Oportunidad Pre-Seed en Roundtable." }
     ],
     partners: [
-      { name: "Mitjans Advocats", status: "confirmed" },
-      { name: "BitBase", status: "interest" },
-      { name: "Ecija Crypto", status: "confirmed" },
-      { name: "Prosegur Crypto", status: "interest" },
-      { name: "Ferrimax", status: "strategic" }
+      { name: "Ferrimax", status: "strategic" },
+      { name: "Prosegur Crypto", status: "confirmed" },
+      { name: "Roundtable", status: "strategic" },
+      { name: "Ecija Crypto", status: "confirmed" }
     ],
     lounge: {
-      badge: "Acceso Exclusivo para Inversores",
-      title: "Comunidad Privada VaultBit",
-      description: "Acceda a nuestra comunidad exclusiva en Telegram donde compartimos actualizaciones semanales, análisis del mercado MiCA e información privilegiada sobre el despliegue de infraestructura física.",
-      button: "Entrar en la Comunidad"
+      badge: "COMUNIDAD PRIVADA",
+      title: "Capital Lounge",
+      description: "Únete a nuestro ecosistema exclusivo de inversores y fundadores en Telegram para recibir updates en tiempo real.",
+      button: "UNIRSE AL TELEGRAM"
     },
     deck: {
-      intro: "La primera infraestructura europea diseñada para proteger llaves privadas bajo estándares de seguridad bancaria.",
+      intro: "La Institucionalización de la Custodia de Activos Digitales.",
       mission: "Proteger de forma segura y confidencial las llaves privadas y dispositivos de custodia de criptoactivos mediante custodia física profesional.",
       vision: "Convertirnos en el referente europeo en custodia física de criptoactivos, con presencia en los principales hubs financieros.",
       whyNow: {
-        title: "Por qué ahora",
+        title: "CONTEXTO ESTRATÉGICO",
         reasons: [
-          { title: "Regulación MiCA", desc: "Entrada en vigor del marco regulatorio europeo que exige mayores estándares de cumplimiento." },
-          { title: "Aversión al Riesgo", desc: "Mayor demanda de seguridad tras quiebras recientes de entidades centralizadas." },
-          { title: "Adopción Institucional", desc: "Entrada de grandes capitales que requieren custodia profesional física desconectada." }
+          { title: "Regulación MiCA", desc: "Exigencia inmediata de estándares bancarios para cripto-activos." },
+          { title: "Fragilidad Software", desc: "Hackeos constantes demuestran que el código no es suficiente." },
+          { title: "Demanda B2B", desc: "Family Offices e instituciones buscan resguardo físico soberano." }
         ]
       },
-      pricing: {
-        title: "Modelo de Negocio",
-        subtitle: "Alquiler de cajas de seguridad especializadas",
-        tiers: [
-          { name: "Caja S", price: "95€", period: "/mes" },
-          { name: "Caja M", price: "135€", period: "/mes" },
-          { name: "Caja L", price: "180€", period: "/mes" }
+      unitEconomics: {
+        title: "MODELO DE NEGOCIO",
+        metrics: [
+          { label: "Suscripción S/M/L", value: "121 €", detail: "Precio medio ponderado mensual por caja." },
+          { label: "Ingresos Hub", value: "726.000 €", detail: "Facturación anual recurrente (100% Occ)." },
+          { label: "EBITDA Hub", value: "436.000 €", detail: "Margen operativo neto tras estabilización (60%)." }
         ]
       },
-      financialModel: {
-        revenue: "726.000 €",
-        occupancy: "40%",
-        avgPrice: "121 €/mes",
-        note: "La estructura modular permite adaptar la distribución de cajas según la demanda del mercado."
-      },
-      competition: {
-        title: "Análisis Competitivo",
-        labels: ["Custodia Física", "Especialización Cripto", "Grado VII", "Privacidad", "Modelo Escalable"]
+      validation: {
+        title: "TRACCIÓN Y PIPELINE",
+        total: "+40 Entidades Institucionales",
+        sectors: ["Banca Privada", "Exchanges Centralizados", "Gestoras de Patrimonio", "Family Offices", "Entidades MiCA-Ready"],
+        legal: ["Notarías y Registradores", "Auditoras de Activos Digitales"]
       },
       expansion: {
-        title: "Plan de Expansión",
+        title: "PLAN DE EXPANSIÓN",
+        subtitle: "ESTRATEGIA DE DESPLIEGUE POR ETAPAS",
+        goal: "Objetivo: Red de custodia física líder en España y referencia en Europa.",
         steps: [
-          { year: "Año 1-2", title: "Consolidación", desc: "Optimización de la sede inicial en Barcelona." },
-          { year: "Año 3", title: "2ª Ubicación", desc: "Apertura en ciudad estratégica de alto potencial." },
-          { year: "Año 4-5", title: "Escalado", desc: "Expansión a 2-3 nuevas sedes en capitales clave." },
-          { year: "Año 6+", title: "Europa", desc: "Entrada en mercados con alta adopción cripto." }
+          { year: "Año 1-2", title: "Consolidación Sede Inicial", desc: "Barcelona Hub: Optimización de ocupación (objetivo ≥80%) y validación de protocolos operativos Grado VII." },
+          { year: "Año 3", title: "Apertura Hub Nacional", desc: "Madrid/Lisboa: Réplica del modelo en mercados estratégicos con alta densidad de perfiles HNWI e institucionales." },
+          { year: "Año 4-5", title: "Escalado Europeo", desc: "París/Berlín: Expansión a hubs financieros clave mediante acuerdos marco con proveedores y reducción de CAPEX unitario." },
+          { year: "Año 6+", title: "Referencia Continental", desc: "Suiza/Londres: Consolidación como operador europeo de infraestructura crítica para la custodia soberana de activos." }
         ]
       },
       risks: {
-        title: "Riesgos & Mitigación",
+        title: "GESTIÓN DE RIESGOS ESTRATÉGICOS",
         items: [
-          { category: "Regulatorio", risk: "Evolución MiCA", mitigation: "Gobernanza activa y asesoría legal continua." },
-          { category: "Operativo", risk: "Intrusión/Sabotaje", mitigation: "Bóvedas Grado VII y seguridad multicapa." },
-          { category: "Mercado", risk: "Ciclos Cripto", mitigation: "Modelo diversificado de custodia física." },
-          { category: "Ocupación", risk: "Ritmo de captación", mitigation: "Go-to-market prudente y acuerdos B2B." }
+          { category: "Seguridad Física", risk: "Intrusión o Sabotaje", mitigation: "Cámaras Grado VII (EN 1143-1), monitorización 24/7 conectada a CRA y protocolos de respuesta inmediata." },
+          { category: "Tecnológico", risk: "Fallo de Sistemas de Acceso", mitigation: "Redundancia multicapa en biometría, SAI/UPS online y protocolo de anulación manual jerárquica física." },
+          { category: "Regulatorio", risk: "Cambios en MiCA / Seguridad", mitigation: "Gobernanza activa con asesoría legal especializada y diseño modular que permite adaptaciones técnicas rápidas." },
+          { category: "Operativo", risk: "Retrasos en Licencias / Obras", mitigation: "Prevalidación técnica de locales, contratos llave en mano con penalizaciones por demora y localizaciones alternativas." },
+          { category: "Financiero", risk: "Ocupación Inferior al Objetivo", mitigation: "Punto de equilibrio bajo (≈40%), estrategia de preventa B2B y reserva de liquidez para 12 meses de runway garantizado." },
+          { category: "Mercado", risk: "Desaceleración Adopción Cripto", mitigation: "Posicionamiento como infraestructura defensiva de patrimonio, no dependiente de la volatilidad o ciclos del mercado." }
         ]
       },
       thesis: [
-        "Negocio de ingresos recurrentes y alta visibilidad",
-        "Punto de equilibrio bajo que reduce riesgo operativo",
-        "Márgenes elevados una vez estabilizada la ocupación",
-        "Activo físico defensivo con barreras de entrada reales",
-        "Demanda estructural impulsada por regulación y madurez",
-        "Modelo modular y replicable en capitales europeas"
+        "Oportunidad de inversión basada en infraestructura real, no en especulación",
+        "Moat técnico inexpugnable certificado bajo estándares de banca central",
+        "Modelo escalable de SaaS Físico con márgenes operativos del 60%",
+        "Negocio de ingresos recurrentes y alta visibilidad en un sector en maduración"
       ]
     },
     dashboard: {
-      label: "Solo Datos Internos",
-      title: "Dashboard de Inversión Profunda",
-      chartTitle: "Crecimiento Multisede",
-      chartSub: "Escalabilidad operativa proyectada 2026 - 2030.",
+      label: "DATA ROOM",
+      title: "Métricas Financieras",
+      chartTitle: "Escalabilidad de Ingresos",
+      chartSub: "Proyección basada en despliegue de sedes y ocupación.",
       chartRevenue: "Ingresos",
       chartEbitda: "EBITDA",
-      chartNote: "Modelo validado para apertura anual de sedes estratégicas tras Sede Barcelona.",
-      capexTitle: "Desglose Técnico CAPEX",
-      capexSub: "Asignación de capital para infraestructura Grado VII (Sede 1)."
+      chartNote: "Datos proyectados bajo escenario conservador de mercado.",
+      capexTitle: "Inversión Estratégica",
+      capexSub: "Capital destinado al despliegue de infraestructura crítica."
     },
     footer: {
-      confidential: "DOCUMENTO ESTRICTAMENTE CONFIDENCIAL • PLAN DE NEGOCIO 2026 • BARCELONA • PROHIBIDA SU DISTRIBUCIÓN",
+      confidential: "DOCUMENTO CONFIDENCIAL • SOLO PARA INVERSORES ROUNDTABLE",
       rights: "© 2026 VaultBit Custody S.L. Todos los derechos reservados."
     }
   },
   en: {
-    nav: { overview: "Overview", deck: "Pitch Deck" },
-    tagline: "Critical Infrastructure for Digital Asset Custody",
+    nav: { overview: "STRATEGIC ANALYSIS", deck: "INVESTMENT THESIS" },
+    tagline: "The Standard for Grade VII Physical Custody",
     location: "Barcelona, Spain",
-    round: "Pre-Seed Round",
-    opportunity: "VaultBit is positioned as the first European Tier VII physical infrastructure operator specialized in the custody of private keys and digital assets. We solve the 'Custody Trilemma' through a scalable Physical SaaS ('Storage-as-a-Service') model, with 60% operating margins and impregnable entry barriers, designed to lead the post-MiCA era.",
+    round: "PRE-SEED ROUND • ROUNDTABLE EXCLUSIVE",
+    opportunity: "VaultBit is the first European Grade VII critical infrastructure operator specialized in digital asset custody under central bank standards. We solve physical vulnerability through an impregnable €1,100,000 'Storage as a Service' model.",
+    roundtableInfo: {
+      title: "Deal Information",
+      spv: "Luxembourg SCSp",
+      instrument: "BSA AIR",
+      discount: "20%",
+      cap: "€6,000,000",
+      allocation: "€1,100,000",
+      industry: "Blockchain / Crypto / Web3",
+      location: "Spain",
+      valType: "Pre-Money"
+    },
+    competition: {
+      title: "Strategic Positioning",
+      subtitle: "While the market offers partial solutions, VaultBit is the only European provider combining certified physical security with crypto specialization and a scalable model.",
+      headers: ["Company", "Physical Custody", "Crypto Specialized", "Grade VII", "Privacy", "Scalable Model"],
+      rows: [
+        { name: "VaultBit", values: [true, true, true, true, true] },
+        { name: "Banks", values: [true, false, true, false, false] },
+        { name: "Exchanges", values: [false, true, false, false, true] },
+        { name: "Security Companies", values: [true, false, false, false, false] },
+        { name: "Digital Custodians", values: [false, true, false, false, true] }
+      ]
+    },
+    ferrimax: {
+      title: "Technological Pillar: Ferrimax",
+      subtitle: "Strategic partnership with the European leader in high-security infrastructure for building our hubs.",
+      features: [
+        { title: "Grade VII Armoring", desc: "Vaults and doors certified EN 1143-1 with high-performance composites and thermal armors." },
+        { title: "FMX ACS Control", desc: "Electronic management system with multi-layer biometrics (facial, iris, hand) and full access auditing." },
+        { title: "Dual Security", desc: "Prisoner key protocol and manual emergency override accessible only under institutional hierarchy." }
+      ],
+      certifications: ["UNE-EN 1143-1 GRADE VII", "UNE-EN 1300 CLASS C", "FMX ACS SYSTEM"]
+    },
     problem: [
-      { title: "Physical Vulnerability", desc: "23% of all Bitcoin is lost forever. Home thefts and hardware wallet losses." },
-      { title: "Systemic Risk", desc: "Exchange hacks (FTX) and advanced phishing compromising digital custody." },
-      { title: "Locked Inheritance", desc: "Lack of effective legal protocols for digital wealth transmission." }
+      { title: "Digital Fragility", desc: "Software is hackable. Isolated hardware is the only real defense." },
+      { title: "Human Error", desc: "23% of Bitcoin is lost due to physical key mismanagement." },
+      { title: "Counterparty Risk", desc: "Institutions now demand sovereign and offline physical custody." }
     ],
     solution: [
-      { title: "Grade VII (EN 1143-1)", desc: "Central Bank Standard. Extreme resistance to thermal lances and explosives." },
-      { title: "Total Air-Gap", desc: "Absolute physical isolation from internet. Immune to remote hacks and exploits." },
-      { title: "Partner: Ferrimax", desc: "Alliance with the global leader in physical bank security for technical deployment." }
+      { title: "Grade VII Vaults", desc: "EN 1143-1 certified infrastructure against thermal attacks." },
+      { title: "Air-Gap Protocol", desc: "Total network isolation. If not online, no remote risk exists." },
+      { title: "Access Sovereignty", desc: "The client maintains total control. We only provide the shielding." }
     ],
     deal: {
       target: "€1,100,000",
       instrument: "BSA AIR",
       valuationCap: "€6,000,000",
       allocation: [
-        { category: "Technical CAPEX", percentage: 70, details: ["Grade VII Vault", "Module Units", "Armoring", "Biometrics"] },
-        { category: "Operating Runway", percentage: 20, details: ["OPEX 12 months", "Security", "Staff"] },
-        { category: "GTM & Marketing", percentage: 10, details: ["B2B Marketing", "MiCA Reserve"] }
+        { category: "Critical Infra", percentage: 80, details: ["Hub 1 BCN Construction", "Active Security"] },
+        { category: "Strategic Scaling", percentage: 20, details: ["Institutional GTM", "MiCA Licensing"] }
       ]
     },
-    roundDetails: {
-      title: "Investment Terms",
-      instrument: "BSA AIR (European Safe)",
-      discount: "20% (Early Bird)",
-      minTicket: "€10,000",
-      structure: "Professional SPV (SCSp)",
-      platform: "Roundtable.eu (European Leader)",
-      securityNote: "Process fully managed by Roundtable, ensuring capital segregation and legal security."
-    },
     market: [
-      { label: "Spain Crypto Users", value: "4M+", description: "SAM Market driven by MiCA regulation." },
-      { label: "EU Crypto Users", value: "96M", description: "Total potential user base in Europe." },
-      { label: "Estimated TAM", value: "€1.4B", description: "Total addressable market for premium custody." }
+      { label: "Breakeven Occupancy", value: "40%", description: "Extreme operational efficiency." },
+      { label: "Revenue per Hub", value: "€726k", description: "Projected annual recurring income." },
+      { label: "EBITDA Margin", value: "60%", description: "Net profitability of Physical SaaS." }
     ],
     financials: [
-      { label: "EBITDA Margin", value: "60%", description: "High recurring operating profitability." },
-      { label: "Annual Revenue", value: "€726k", description: "Projection per branch (Barcelona at 100%)." },
-      { label: "Breakeven", value: "40%", description: "Low break-even point per branch." }
+      { label: "Total Investment", value: "€1.1M", description: "Capital destined for infrastructure and expansion." },
+      { label: "Projected Payback", value: "1.7 Years", description: "Technical ROI per site." },
+      { label: "Valuation Cap", value: "€6.0M", description: "Pre-Seed opportunity on Roundtable." }
     ],
     partners: [
-      { name: "Mitjans Advocats", status: "confirmed" },
-      { name: "BitBase", status: "interest" },
-      { name: "Ecija Crypto", status: "confirmed" },
-      { name: "Prosegur Crypto", status: "interest" },
-      { name: "Ferrimax", status: "strategic" }
+      { name: "Ferrimax", status: "strategic" },
+      { name: "Prosegur Crypto", status: "confirmed" },
+      { name: "Roundtable", status: "strategic" },
+      { name: "Ecija Crypto", status: "confirmed" }
     ],
     lounge: {
-      badge: "Exclusive Investor Access",
-      title: "VaultBit Private Community",
-      description: "Access our exclusive Telegram community where we share weekly updates, MiCA market analysis, and insider information on physical infrastructure deployment.",
-      button: "Enter Community"
+      badge: "PRIVATE COMMUNITY",
+      title: "Capital Lounge",
+      description: "Join our exclusive ecosystem of investors and founders on Telegram for real-time updates.",
+      button: "JOIN TELEGRAM"
     },
     deck: {
-      intro: "The first European infrastructure designed to protect private keys under banking security standards.",
-      mission: "To securely and confidentially protect private keys and cryptoasset custody devices through professional physical custody.",
-      vision: "To become the European reference in physical custody of cryptoassets, with a presence in the main financial hubs.",
+      intro: "Institutionalizing Digital Asset Custody.",
+      mission: "To securely and confidentially protect private keys and crypto-asset custody devices through professional physical custody.",
+      vision: "To become the European reference in physical custody of crypto-assets, with a presence in major financial hubs.",
       whyNow: {
-        title: "Why Now",
+        title: "STRATEGIC CONTEXT",
         reasons: [
-          { title: "MiCA Regulation", desc: "Implementation of the European regulatory framework requiring higher standards of compliance." },
-          { title: "Risk Aversion", desc: "Increased demand for security following recent bankruptcies of centralized entities." },
-          { title: "Institutional Adoption", desc: "Entry of large institutional capital requiring offline, professional physical custody." }
+          { title: "MiCA Regulation", desc: "Immediate requirement of banking standards for crypto-assets." },
+          { title: "Software Fragility", desc: "Constant hacks prove that code alone is not enough." },
+          { title: "B2B Demand", desc: "Family Offices and institutions seek sovereign physical protection." }
         ]
       },
-      pricing: {
-        title: "Business Model",
-        subtitle: "Specialized safety deposit box rental",
-        tiers: [
-          { name: "Box S", price: "95€", period: "/month" },
-          { name: "Box M", price: "135€", period: "/month" },
-          { name: "Box L", price: "180€", period: "/month" }
+      unitEconomics: {
+        title: "BUSINESS MODEL",
+        metrics: [
+          { label: "S/M/L Subscription", value: "€121", detail: "Weighted monthly average price per unit." },
+          { label: "Hub Revenue", value: "€726,000", detail: "Annual recurring billing (100% Occ)." },
+          { label: "Hub EBITDA", value: "€436,000", detail: "Net operating margin after stabilization (60%)." }
         ]
       },
-      financialModel: {
-        revenue: "€726,000",
-        occupancy: "40%",
-        avgPrice: "€121 /month",
-        note: "The modular structure allows box distribution to be adapted according to market demand."
-      },
-      competition: {
-        title: "Competitive Analysis",
-        labels: ["Physical Custody", "Crypto Specialization", "Grade VII", "Privacy", "Scalable Model"]
+      validation: {
+        title: "TRACTION & PIPELINE",
+        total: "+40 Institutional Entities",
+        sectors: ["Private Banking", "Centralized Exchanges", "Asset Managers", "Family Offices", "MiCA-Ready Entities"],
+        legal: ["Notaries & Registrars", "Digital Asset Auditors"]
       },
       expansion: {
-        title: "Expansion Plan",
+        title: "EXPANSION PLAN",
+        subtitle: "STAGED DEPLOYMENT STRATEGY",
+        goal: "Goal: Leading physical custody network in Spain and reference in Europe.",
         steps: [
-          { year: "Year 1-2", title: "Consolidation", desc: "Optimization of the initial Barcelona branch." },
-          { year: "Year 3", title: "2nd Location", desc: "Opening in a strategic high-potential city." },
-          { year: "Year 4-5", title: "Scaling", desc: "Expansion to 2-3 new locations in key capitals." },
-          { year: "Year 6+", title: "Europe", desc: "Entry into markets with high crypto adoption." }
+          { year: "Year 1-2", title: "Site Genesis", desc: "Barcelona Hub: Occupancy optimization (≥80% goal) and validation of Grade VII operational protocols." },
+          { year: "Year 3", title: "National Activation", desc: "Madrid/Lisboa: Model replication in strategic markets with high HNWI and institutional density." },
+          { year: "Year 4-5", title: "European Scaling", desc: "Paris/Berlin: Expansion to key financial hubs via framework agreements and unit CAPEX reduction." },
+          { year: "Year 6+", title: "Continental Standard", desc: "Switzerland/London: Consolidation as European critical infrastructure operator for sovereign asset custody." }
         ]
       },
       risks: {
-        title: "Risks & Mitigation",
+        title: "STRATEGIC RISK MANAGEMENT",
         items: [
-          { category: "Regulatory", risk: "MiCA Evolution", mitigation: "Active governance and continuous legal advice." },
-          { category: "Operational", risk: "Intrusion/Sabotage", mitigation: "Grade VII vaults and multi-layer security." },
-          { category: "Market", risk: "Crypto Cycles", mitigation: "Diversified physical custody model." },
-          { category: "Occupancy", risk: "Capture rate", mitigation: "Prudent go-to-market and B2B agreements." }
+          { category: "Physical Security", risk: "Intrusion or Sabotage", mitigation: "Grade VII Vaults (EN 1143-1), 24/7 CMS monitoring, and immediate response protocols." },
+          { category: "Technological", risk: "Access System Failure", mitigation: "Multi-layer biometric redundancy, online UPS, and hierarchical physical override protocol." },
+          { category: "Regulatory", risk: "Regulatory Framework Changes", mitigation: "Active governance with specialized legal counsel and modular technical design for fast adaptation." },
+          { category: "Operational", risk: "License or Build Delays", mitigation: "Technical site pre-validation, turnkey contracts with delay penalties, and alternative locations." },
+          { category: "Financial", risk: "Below Target Occupancy", mitigation: "Low breakeven (≈40%), B2B presale strategy, and liquidity reserve for 12 months runway." },
+          { category: "Market", risk: "Slowing Crypto Adoption", mitigation: "Positioning as wealth infrastructure, independent of market volatility or specific asset cycles." }
         ]
       },
       thesis: [
-        "Recurring revenue business with high visibility",
-        "Low break-even point reducing operational risk",
-        "High margins once occupancy is stabilized",
-        "Defensive physical asset with real entry barriers",
-        "Structural demand driven by regulation and maturity",
-        "Modular and replicable model in European capitals"
+        "Real infrastructure-based investment opportunity, not speculation",
+        "Impregnable technical moat certified under central bank standards",
+        "Scalable Physical SaaS model with 60% operating margins",
+        "Recurring revenue business with high visibility in a maturing sector"
       ]
     },
     dashboard: {
-      label: "Internal Data Only",
-      title: "Deep Dive Investor Dashboard",
-      chartTitle: "Multi-Location Growth",
-      chartSub: "Projected operational scalability 2026 - 2030.",
+      label: "DATA ROOM",
+      title: "Financial Metrics",
+      chartTitle: "Revenue Scalability",
+      chartSub: "Projection based on site deployment and occupancy.",
       chartRevenue: "Revenue",
       chartEbitda: "EBITDA",
-      chartNote: "Validated model for annual strategic branch openings after Barcelona branch.",
-      capexTitle: "Technical CAPEX Breakdown",
-      capexSub: "Capital allocation for Grade VII infrastructure (Branch 1)."
+      chartNote: "Projected data under conservative market scenario.",
+      capexTitle: "Strategic Investment",
+      capexSub: "Capital destined for critical infrastructure deployment."
     },
     footer: {
-      confidential: "STRICTLY CONFIDENTIAL DOCUMENT • BUSINESS PLAN 2026 • BARCELONA • DISTRIBUTION PROHIBITED",
+      confidential: "CONFIDENTIAL DOCUMENT • ROUNDTABLE INVESTORS ACCESS ONLY",
       rights: "© 2026 VaultBit Custody S.L. All rights reserved."
     }
   }
@@ -330,16 +382,16 @@ export const VAULTBIT_SHARED = {
 
 export const ROADMAP: Record<Language, RoadmapItem[]> = {
   es: [
-    { quarter: "Q1 2026", title: "Cierre Ronda", description: "Finalización de financiación y licencias regulatorias." },
-    { quarter: "Q2 2026", title: "Obra Civil", description: "Construcción de bóveda y adecuación del local." },
-    { quarter: "Q3 2026", title: "Certificación", description: "Inspección Grado VII y Lanzamiento oficial." },
-    { quarter: "Q4 2026", title: "Punto de Equilibrio", description: "Alcance del equilibrio operativo en Sede 1." }
+    { quarter: "Q1 2026", title: "Cierre Ronda", description: "Financiación Roundtable." },
+    { quarter: "Q2 2026", title: "Hub Barcelona", description: "Construcción Grado VII." },
+    { quarter: "Q3 2026", title: "Apertura", description: "Certificación y GTM." },
+    { quarter: "Q4 2026", title: "Escalado", description: "Expansión nacional." }
   ],
   en: [
-    { quarter: "Q1 2026", title: "Round Closure", description: "Financing completion and regulatory licenses." },
-    { quarter: "Q2 2026", title: "Civil Works", description: "Vault construction and premises adaptation." },
-    { quarter: "Q3 2026", title: "Certification", description: "Grade VII inspection and official Launch." },
-    { quarter: "Q4 2026", title: "Break-even", description: "Reaching operating break-even in Branch 1." }
+    { quarter: "Q1 2026", title: "Round Close", description: "Roundtable financing." },
+    { quarter: "Q2 2026", title: "BCN Hub", description: "Grade VII construction." },
+    { quarter: "Q3 2026", title: "Opening", description: "Certification and GTM." },
+    { quarter: "Q4 2026", title: "Scaling", description: "National expansion." }
   ]
 };
 
